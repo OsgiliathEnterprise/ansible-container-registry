@@ -36,4 +36,3 @@ jobs:
       - run:
           name: "molecule test"
           command: molecule test --scenario-name kvm
-
