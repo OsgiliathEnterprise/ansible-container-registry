@@ -1,0 +1,32 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:202101-01 # recommended linux image
+    steps:
+      - checkout
+      - run:
+          name: "adding apt repository"
+          command: sudo apt-add-repository 'deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main'
+      - run:
+          name: "apt update"
+          command: sudo apt update
+      - run:
+          name: "apt upgrade"
+          command: sudo apt upgrade
+      - run:
+          name: "apt install packages"
+          command: sudo apt -y install bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev ca-certificates curl gcc iproute2 sudo vagrant python3 python3-pip
+      - run:
+          name: "vagrant install packages"
+          command: vagrant plugin install vagrant-libvirt
+      - run:
+          name: "pip install packages"
+          command: pip install wheel pyopenssl netaddr python-vagrant yamllint testinfra flake8 ansible ansible-lint molecule molecule-vagrant python-vagrant
+      - run:
+          name: "chmod libvirt socket"
+          command: sudo chmod o+rwx /var/run/libvirt/libvirt-sock
+      - run:
+          name: "molecule test"
+          command: molecule test --scenario-name kvm
+
