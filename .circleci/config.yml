@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: "adding apt repository"
-          command: sudo apt-add-repository 'deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main'
+          command: sudo apt-add-repository --allow 'deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main'
       - run:
           name: "apt update"
           command: sudo apt update
