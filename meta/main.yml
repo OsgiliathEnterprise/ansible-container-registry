@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Tcharl
+  author: Osgiliath enterprise
   description: this role configures a docker registry and protect it via let's encrypt and htpasswd
   company: Osgiliath
 
