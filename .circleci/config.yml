@@ -20,7 +20,7 @@ jobs:
           command: sudo apt upgrade
       - run:
           name: "apt install packages"
-          command: sudo apt -y install bridge-utils dnsmasq-base ebtables libvirt-dev qemu-kvm libvirt-daemon-system libvirt-daemon libvirt-clients qemu-utils ruby-dev ca-certificates curl gcc iproute2 sudo vagrant python3 python3-pip
+          command: sudo apt -y install bridge-utils dnsmasq-base ebtables libvirt-dev qemu-kvm libvirt-daemon-system libvirt-daemon libvirt-clients qemu-utils ruby-dev ca-certificates curl gcc iproute2 sudo vagrant python3 python3-pip cpu-checker
       - run:
           name: "start libvirtd"
           command: sudo systemctl restart libvirtd
