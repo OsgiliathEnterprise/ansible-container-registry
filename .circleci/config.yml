@@ -20,13 +20,13 @@ jobs:
           command: sudo apt upgrade
       - run:
           name: "apt install packages"
-          command: sudo apt -y install bridge-utils dnsmasq-base ebtables libvirt-dev qemu-kvm libvirt-daemon-system  libvirt-clients qemu-utils ruby-dev ca-certificates curl gcc iproute2 sudo vagrant python3 python3-pip
-#      - run:
-#          name: "start libvirtd"
-#          command: sudo systemctl restart libvirt-bin
-#      - run:
-#          name: "chmod libvirt socket"
-#          command: sudo chmod o+rwx /var/run/libvirt/libvirt-sock
+          command: sudo apt -y install bridge-utils dnsmasq-base ebtables libvirt-dev qemu-kvm libvirt-daemon-system libvirt-daemon libvirt-clients qemu-utils ruby-dev ca-certificates curl gcc iproute2 sudo vagrant python3 python3-pip
+      - run:
+          name: "start libvirtd"
+          command: sudo systemctl restart libvirtd
+      - run:
+          name: "chmod libvirt socket"
+          command: sudo chmod o+rwx /var/run/libvirt/libvirt-sock
       - run:
           name: "vagrant install packages"
           command: vagrant plugin install vagrant-libvirt
