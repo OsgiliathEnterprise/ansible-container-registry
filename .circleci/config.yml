@@ -34,7 +34,7 @@ jobs:
           command: pip3 install wheel pyopenssl netaddr python-vagrant yamllint testinfra flake8 ansible ansible-lint molecule molecule-vagrant
       - run:
           name: "Test KVM conditions"
-          command: sudo kvm-ok
+          command: sudo kvm-ok # Fails
       - run:
           name: "molecule test"
           command: molecule test --scenario-name kvm
