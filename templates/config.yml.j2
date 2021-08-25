@@ -8,7 +8,7 @@ log:
   level: debug
 http:
   addr: 0.0.0.0:5000
-  host: http{% if gen_certs %}s{% endif %}://{{container_registry_domain_name}}
+  host: http://{{container_registry_domain_name}}
 storage:
   delete:
     enabled: {{ docker_registry_delete_mode|bool }}

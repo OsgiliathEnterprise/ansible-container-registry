@@ -25,7 +25,7 @@
             create: true
     manage_lvm: true
     gen_certs: false
-    ns_hostname: "containers.dummy.com"
+    hostname: "containers.dummy.com"
   tasks:
     - name: "Include ansible-nameserver to configure hosts"
       include_role:
