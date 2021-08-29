@@ -1,7 +1,7 @@
 ---
 
 - name: ansible-container-registry | nginx-proxy | open 80 port
-  include_role:
+  ansible.builtin.include_role:
     name: tcharl.ansible_routing
   vars:
     firewalld_zones:
@@ -13,7 +13,7 @@
             protocol: tcp
 
 - name: ansible-container-registry | nginx-proxy | open 443 port
-  include_role:
+  ansible.builtin.include_role:
     name: tcharl.ansible_routing
   when: gen_certs
   vars:

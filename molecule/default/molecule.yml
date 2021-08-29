@@ -20,7 +20,7 @@ platforms:
       cpus: 2
       memory: 2048
     provider_raw_config_args:
-      - "customize ['storagectl', :id, '--name', 'IDE', '--hostiocache', 'on']"
+      - "customize ['storagectl', :id, '--name', 'IDE Controller', '--hostiocache', 'on']"
     provider_override_args:
       - "persistent_storage.enabled = true"
       - "persistent_storage.location = 'molecule-container-registry.vdi'"
@@ -30,7 +30,7 @@ platforms:
 provisioner:
   name: ansible
   env:
-    ANSIBLE_ROLES_PATH: ${ANSIBLE_ROLES_PATH}::../../../community
+    ANSIBLE_ROLES_PATH: ${ANSIBLE_ROLES_PATH}:../../../community
 verifier:
   name: testinfra
   env:
