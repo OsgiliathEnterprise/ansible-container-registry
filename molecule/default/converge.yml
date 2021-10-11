@@ -29,8 +29,8 @@
   tasks:
     - name: "Include ansible-nameserver to configure hosts"
       include_role:
-        name: "ansible-nameserver"
+        name: tcharl.ansible_nameserver
 
     - name: "Include ansible-container-registry"
       include_role:
-        name: "ansible-container-registry"
+        name: tcharl.ansible_container_registry

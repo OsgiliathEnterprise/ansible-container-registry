@@ -30,7 +30,7 @@ platforms:
 provisioner:
   name: ansible
   env:
-    ANSIBLE_ROLES_PATH: ${ANSIBLE_ROLES_PATH}:../../../community
+    ANSIBLE_ROLES_PATH: ../../../community:${ANSIBLE_ROLES_PATH}:${MOLECULE_PROJECT_DIRECTORY}/..
 verifier:
   name: testinfra
   env:
