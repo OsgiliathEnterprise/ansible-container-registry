@@ -26,11 +26,6 @@
     manage_lvm: true
     gen_certs: false
     hostname: "containers.dummy.com"
-  tasks:
-    - name: "Include ansible-nameserver to configure hosts"
-      include_role:
-        name: tcharl.ansible_nameserver
-
-    - name: "Include ansible-container-registry"
-      include_role:
-        name: tcharl.ansible_container_registry
+  roles:
+    - role: tcharl.ansible_nameserver
+    - role: tcharl.ansible_container_registry
