@@ -1,3 +1,5 @@
 .idea
 .cache
-**/__pychache__
+**/__pycache__
+.tox
+build/

@@ -1,0 +1,7 @@
+docker
+ansible-lint
+flake8
+yamllint
+testinfra
+requests
+molecule-docker
