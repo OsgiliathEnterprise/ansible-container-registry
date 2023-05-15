@@ -28,4 +28,4 @@
     hostname: "containers.dummy.com"
   roles:
     - role: tcharl.ansible_nameserver
-    - role: tcharl.ansible_container_registry
+    - role: ansible-container-registry

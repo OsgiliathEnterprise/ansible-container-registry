@@ -8,7 +8,7 @@
     - "{{ docker_shared_data_registry_path }}"
     - "{{ docker_shared_data_registry_data_path }}"
     - "{{ docker_shared_data_registry_config_path }}"
-  file:
+  ansible.builtin.file:
     state: directory
     dest: '{{ item }}'
     mode: "0753"
@@ -17,7 +17,7 @@
   become: true
   become_user: root
   with_items: '{{ docker_registry_users }}'
-  htpasswd:
+  community.general.htpasswd:
     path: '{{ docker_shared_data_nginx_proxy_auth_path }}/registry.htpasswd'
     mode: 0600
     name: '{{ item.uid }}'
@@ -29,14 +29,14 @@
   become_user: root
   with_items:
     - config.yml
-  template:
+  ansible.builtin.template:
     src: '{{ item }}.j2'
     dest: '{{ docker_shared_data_registry_config_path }}/{{ item }}'
     mode: '0644'
 
 - name: ansible-container-registry | nginx-proxy | launching registry container without security
   become: true
-  docker_container:
+  community.general.docker_container:
     restart_policy: always
     name: docker-registry
     image: registry:2
@@ -59,7 +59,7 @@
       - '{{ docker_shared_data_registry_data_path }}:/var/lib/registry:rw'
 
 - name: ansible-container-registry | nginx-proxy | wait for letsencrypt to achieve its acme dance
-  wait_for:
+  ansible_builtin.wait_for:
     timeout: 300
   when: gen_certs
   delegate_to: localhost
@@ -74,7 +74,7 @@
 - name: ansible-container-registry | nginx-proxy | launching registry container...
   when: gen_certs
   become: true
-  docker_container:
+  community.docker.docker_container:
     restart_policy: always
     name: docker-registry
     image: registry:2
