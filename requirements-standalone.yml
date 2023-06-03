@@ -1,0 +1,13 @@
+---
+roles:
+  # Install a role from Ansible Galaxy.
+  - name: tcharl.ansible_hostname
+  - name: robertdebock.reboot
+  - name: robertdebock.bootstrap
+  - name: robertdebock.core_dependencies
+  - name: tcharl.ansible_containerization
+  - name: geerlingguy.docker
+  - name: mrlesmithjr.manage-lvm
+  - name: tcharl.ansible_volumes
+  - name: tcharl.ansible_routing
+  - name: tcharl.ansible_nameserver # for tests
