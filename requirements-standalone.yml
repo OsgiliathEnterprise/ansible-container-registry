@@ -7,7 +7,7 @@ roles:
   - name: robertdebock.core_dependencies
   - name: tcharl.ansible_containerization
   - name: geerlingguy.docker
-  - name: mrlesmithjr.manage-lvm
+  - name: mrlesmithjr.manage_lvm
   - name: tcharl.ansible_volumes
   - name: tcharl.ansible_routing
   - name: tcharl.ansible_nameserver # for tests

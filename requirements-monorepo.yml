@@ -5,4 +5,4 @@ roles:
   - name: robertdebock.bootstrap
   - name: robertdebock.core_dependencies
   - name: geerlingguy.docker
-  - name: mrlesmithjr.manage-lvm
+  - name: mrlesmithjr.manage_lvm
