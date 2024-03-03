@@ -6,11 +6,8 @@
   vars:
     firewalld_zones:
       - name: public
-        enabled_ports:
-          - port: 80
-            protocol: tcp
-          - port: 80
-            protocol: tcp
+        enabled_services:
+          - service: "http"
 
 - name: ansible-container-registry | nginx-proxy | open 443 port
   ansible.builtin.include_role:
@@ -19,11 +16,8 @@
   vars:
     firewalld_zones:
       - name: public
-        enabled_ports:
-          - port: 443
-            protocol: tcp
-          - port: 443
-            protocol: tcp
+        enabled_services:
+          - service: "https"
 
 - name: ansible-container-registry | nginx-proxy | configure virtualhost
   include_role:
