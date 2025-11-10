@@ -2,11 +2,11 @@
 - name: Converge
   hosts: client.osgiliath.test
   vars:
-    idm_preferred_nic: "eth1"
+    preferred_nic: "eth1"
     company_domain: osgiliath.test
     secure_logs: False
-    standalone_role: False
-    preferred_nic: "eth1"
+    company_realm_password: '123ADMin'
+    company_ad_password: '123ADmPass'
     lvm_groups:
       - vgname: non-persistent
         disks:

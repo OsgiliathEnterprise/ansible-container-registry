@@ -11,3 +11,10 @@ roles:
   - name: tcharl.ansible_volumes
   - name: tcharl.ansible_routing
   - name: tcharl.ansible_nameserver # for tests
+  - name: tcharl.freeipa_server
+  - name: tcharl.ansible_securehost
+  - name: tcharl.fail2ban
+  - name: tcharl.etchost_append
+  - name: geerlingguy.ntp
+  - name: robertdebock.fail2ban
+  - name: robertdebock.epel

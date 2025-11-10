@@ -20,7 +20,7 @@
           - service: "https"
 
 - name: ansible-container-registry | nginx-proxy | configure virtualhost
-  include_role:
+  ansible.builtin.include_role:
     name: tcharl.ansible_routing
   when: gen_certs
   vars:

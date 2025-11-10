@@ -1,7 +1,12 @@
 ---
 - name: Converge
-  hosts: all
+  hosts: client.osgiliath.test
   vars:
+    idm_preferred_nic: "eth1"
+    preferred_nic: "eth1"
+    company_domain: osgiliath.test
+    secure_logs: False
+    standalone_role: False
     lvm_groups:
       - vgname: non-persistent
         disks:
@@ -27,5 +32,4 @@
     gen_certs: false
     hostname: "containers.dummy.com"
   roles:
-    - role: tcharl.ansible_nameserver
     - role: tcharl.ansible_container_registry

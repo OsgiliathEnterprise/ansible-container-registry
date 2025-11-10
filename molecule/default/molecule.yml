@@ -10,8 +10,8 @@ driver:
   provider:
     name: virtualbox
 platforms:
-  - name: Fedora-Molecule-Container-Registry
-    box: ${TESTBOX:-fedora/39-cloud-base}
+  - name: idm.osgiliath.test
+    box: ${TESTBOX:-bento/fedora-42}
     provider_options:
       cpus: 2
       memory: 2048
@@ -23,6 +23,23 @@ platforms:
       - "persistent_storage.size = 2000"
       - "persistent_storage.mount = false"
       - "persistent_storage.diskdevice = '/dev/sdb'"
+    groups:
+      - ipaservers
+  - name: client.osgiliath.test
+    box: ${TESTBOX:-bento/fedora-42}
+    provider_options:
+      cpus: 2
+      memory: 2048
+    provider_raw_config_args:
+      - "customize ['storagectl', :id, '--name', 'IDE', '--hostiocache', 'on']"
+    provider_override_args:
+      - "persistent_storage.enabled = true"
+      - "persistent_storage.location = 'molecule-container-registry.vdi'"
+      - "persistent_storage.size = 2000"
+      - "persistent_storage.mount = false"
+      - "persistent_storage.diskdevice = '/dev/sdb'"
+    groups:
+      - ipaclients
 provisioner:
   name: ansible
 verifier:
