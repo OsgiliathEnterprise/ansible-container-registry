@@ -16,5 +16,6 @@ readme: "README.md"
 license:
   - "Apache-2.0"
 tags:
-  - "docker-repository"
-  - "container registry"
+  - "dockerrepository"
+  - "containerregistry"
+  - "linux"

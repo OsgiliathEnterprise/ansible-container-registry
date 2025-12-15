@@ -4,5 +4,8 @@ exclude_paths:
  - .tox/
  - meta/
  - molecule/
+ - .ansible/
 skip_list:
  - '106'  # Role name {} does not match ``^[a-z][a-z0-9_]+$`` pattern
+ - galaxy[no-changelog]
+ - var-naming[no-role-prefix]

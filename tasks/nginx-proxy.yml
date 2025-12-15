@@ -1,6 +1,6 @@
 ---
 
-- name: ansible-container-registry | nginx-proxy | open 80 port
+- name: Nginx-proxy | open 80 port
   ansible.builtin.include_role:
     name: tcharl.ansible_routing
   vars:
@@ -9,7 +9,7 @@
         enabled_services:
           - service: "http"
 
-- name: ansible-container-registry | nginx-proxy | open 443 port
+- name: Nginx-proxy | open 443 port
   ansible.builtin.include_role:
     name: tcharl.ansible_routing
   when: gen_certs
@@ -19,7 +19,7 @@
         enabled_services:
           - service: "https"
 
-- name: ansible-container-registry | nginx-proxy | configure virtualhost
+- name: Nginx-proxy | configure virtualhost
   ansible.builtin.include_role:
     name: tcharl.ansible_routing
   when: gen_certs

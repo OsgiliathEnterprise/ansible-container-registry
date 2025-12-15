@@ -1,6 +1,6 @@
 ---
 
-- name: ansible-container-registry | nginx-proxy | make directories
+- name: Docker-registry | make directories
   become: true
   become_user: root
   with_items:
@@ -13,7 +13,7 @@
     dest: '{{ item }}'
     mode: "0753"
 
-- name: ansible-container-registry | nginx-proxy | add passwds to /etc/docker-registry/auth/registry.htpasswd
+- name: Docker-registry | add passwds to /etc/docker-registry/auth/registry.htpasswd
   become: true
   become_user: root
   with_items: '{{ docker_registry_users }}'
@@ -24,7 +24,7 @@
     password: '{{ item.pwd }}'
     crypt_scheme: bcrypt
 
-- name: ansible-container-registry | nginx-proxy | generate docker-registry config file
+- name: Docker-registry | generate docker-registry config file
   become: true
   become_user: root
   with_items:
@@ -34,7 +34,7 @@
     dest: '{{ docker_shared_data_registry_config_path }}/{{ item }}'
     mode: '0644'
 
-- name: ansible-container-registry | nginx-proxy | launching registry container without security
+- name: Docker-registry | launching registry container without security
   become: true
   community.general.docker_container:
     restart_policy: always
@@ -58,20 +58,20 @@
       - '{{ docker_shared_data_nginx_proxy_auth_path }}:/auth:ro'
       - '{{ docker_shared_data_registry_data_path }}:/var/lib/registry:rw'
 
-- name: ansible-container-registry | nginx-proxy | wait for letsencrypt to achieve its acme dance
+- name: Docker-registry | wait for letsencrypt to achieve its acme dance
   ansible_builtin.wait_for:
     timeout: 300
   when: gen_certs
   delegate_to: localhost
 
-- name: ansible-container-registry | nginx-proxy | stop registry container...
+- name: Docker-registry | stop registry container...
   when: gen_certs
   become: true
-  docker_container:
+  community.docker.docker_container:
     state: stopped
     name: docker-registry
 
-- name: ansible-container-registry | nginx-proxy | launching registry container...
+- name: Docker-registry | launching registry container...
   when: gen_certs
   become: true
   community.docker.docker_container:

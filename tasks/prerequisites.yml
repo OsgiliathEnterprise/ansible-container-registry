@@ -1,12 +1,12 @@
 ---
 
-- name: ansible-volumes | install prerequisite - pip
+- name: Prerequisite | install prerequisite - pip
   ansible.builtin.package:
     name: python-pip
     state: present
   become: true
 
-- name: ansible-volumes | install prerequisite - docker
+- name: Prerequisite | install prerequisite - docker
   ansible.builtin.pip:
     name: ["docker", "passlib"]
     state: present
