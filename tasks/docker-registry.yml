@@ -19,7 +19,7 @@
   with_items: '{{ docker_registry_users }}'
   community.general.htpasswd:
     path: '{{ docker_shared_data_nginx_proxy_auth_path }}/registry.htpasswd'
-    mode: 0600
+    mode: "0600"
     name: '{{ item.uid }}'
     password: '{{ item.pwd }}'
     crypt_scheme: bcrypt
@@ -59,7 +59,7 @@
       - '{{ docker_shared_data_registry_data_path }}:/var/lib/registry:rw'
 
 - name: Docker-registry | wait for letsencrypt to achieve its acme dance
-  ansible_builtin.wait_for:
+  ansible.builtin.wait_for:
     timeout: 300
   when: gen_certs
   delegate_to: localhost

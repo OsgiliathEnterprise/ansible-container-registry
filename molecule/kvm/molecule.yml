@@ -32,8 +32,15 @@ platforms:
       - ipaclients
 provisioner:
   name: ansible
+  env:
+    ANSIBLE_COLLECTIONS_PATH: "${MOLECULE_PROJECT_DIRECTORY}/../community-collections:${ANSIBLE_COLLECTIONS_PATH}"
+    ANSIBLE_REMOTE_TMP: /var/tmp/ansible-remote
+    ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
+  options:
+    vvv: True
   config_options:
     defaults:
+      remote_tmp: /var/tmp/ansible-remote
       forks: 20
     ssh_connection:
       pipelining: true
