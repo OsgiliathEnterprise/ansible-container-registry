@@ -4,7 +4,6 @@ dependency:
   name: galaxy
   options:
     role-file: requirements-standalone.yml
-    requirements-file: requirements-collections.yml
 driver:
   name: vagrant
   provider:
