@@ -26,7 +26,6 @@ jobs:
         run: |
           cd tcharl.ansible_container_registry
           ansible-galaxy role install -r requirements-standalone.yml
-          ansible-galaxy collection install -r requirements-collections.yml
   lint:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
